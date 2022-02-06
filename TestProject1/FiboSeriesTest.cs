@@ -7,6 +7,7 @@ namespace TestProject1
     public class FiboSeriesTest
     {
         [Fact]
+        [Trait("Category", "FiboSeries")]
         public void FiboSeriesNotContainsZero()
         {
             var fibo = new Calculator();
@@ -16,6 +17,7 @@ namespace TestProject1
             //Assert.DoesNotContain(0,result);
         }
         [Fact]
+        [Trait("Category", "FiboSeries")]
         public void FiboSeriesContains13()
         {
             var fibo = new Calculator();
@@ -23,6 +25,7 @@ namespace TestProject1
             Assert.Contains(13, result);
         }
         [Fact]
+        [Trait("Category","FiboSeries")]
         public void CheckFiboList()
         {
             var expectedFiboSeriesList = new List<int>() {1,1,2,3,5,8,13};
