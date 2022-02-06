@@ -42,5 +42,14 @@ namespace TestProject1
             var result = _fiboSeriesFixture.Calc.FiboSeries;
             Assert.Equal(expectedFiboSeriesList, result);
         }
+        [Theory]
+        [InlineData(1,true)]
+        [InlineData(2,false)]
+        public void IsOdd_TestOddAndEven(int number,bool expected)
+        {
+            var calc = _fiboSeriesFixture.Calc;
+            var result = calc.IsOdd(number);
+            Assert.Equal(expected,result);
+        }
     }
 }

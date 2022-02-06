@@ -13,5 +13,9 @@ namespace ConsoleApp1
         {
             return a + b;
         }
+        public bool IsOdd(int number)
+        {
+            return (number % 2) == 1;
+        }
     }
 }
