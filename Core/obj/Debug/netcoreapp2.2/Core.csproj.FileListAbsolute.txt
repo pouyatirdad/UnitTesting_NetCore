@@ -1,0 +1,10 @@
+C:\Users\pouya\OneDrive\Desktop\TestMyCode\myTestingCode\Core\bin\Debug\netcoreapp2.2\Core.deps.json
+C:\Users\pouya\OneDrive\Desktop\TestMyCode\myTestingCode\Core\bin\Debug\netcoreapp2.2\Core.dll
+C:\Users\pouya\OneDrive\Desktop\TestMyCode\myTestingCode\Core\bin\Debug\netcoreapp2.2\Core.pdb
+C:\Users\pouya\OneDrive\Desktop\TestMyCode\myTestingCode\Core\obj\Debug\netcoreapp2.2\Core.csproj.AssemblyReference.cache
+C:\Users\pouya\OneDrive\Desktop\TestMyCode\myTestingCode\Core\obj\Debug\netcoreapp2.2\Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pouya\OneDrive\Desktop\TestMyCode\myTestingCode\Core\obj\Debug\netcoreapp2.2\Core.AssemblyInfoInputs.cache
+C:\Users\pouya\OneDrive\Desktop\TestMyCode\myTestingCode\Core\obj\Debug\netcoreapp2.2\Core.AssemblyInfo.cs
+C:\Users\pouya\OneDrive\Desktop\TestMyCode\myTestingCode\Core\obj\Debug\netcoreapp2.2\Core.csproj.CoreCompileInputs.cache
+C:\Users\pouya\OneDrive\Desktop\TestMyCode\myTestingCode\Core\obj\Debug\netcoreapp2.2\Core.dll
+C:\Users\pouya\OneDrive\Desktop\TestMyCode\myTestingCode\Core\obj\Debug\netcoreapp2.2\Core.pdb
