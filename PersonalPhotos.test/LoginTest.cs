@@ -21,7 +21,7 @@ namespace PersonalPhotos.test
             _logins = new Mock<ILogins>();
 
             var session = Mock.Of<ISession>();
-            var httpsContext = Mock.Of<HttpContext>(x=>x.Session == session);
+            var httpsContext = Mock.Of<HttpContext>(x => x.Session == session);
 
             _accessor = new Mock<IHttpContextAccessor>();
             _accessor.Setup(x => x.HttpContext).Returns(httpsContext);
@@ -54,8 +54,21 @@ namespace PersonalPhotos.test
         [Fact]
         public async Task Login_GivenCorrectPassword_RedirectoDisplayAction()
         {
-            const string pass= "Test1234";
-            var modelView = Mock.Of<LoginViewModel>(x =>x.Email=="test@gmail.com" && x.Password == pass);
+
+            /*
+              
+             tip :
+
+            if you want test a method , everything in method should be mock
+
+            ,
+
+            if clear one below line test not work , because the method need this , you must see login method
+
+            */
+
+            const string pass = "Test1234";
+            var modelView = Mock.Of<LoginViewModel>(x => x.Email == "test@gmail.com" && x.Password == pass);
             var model = Mock.Of<User>(x => x.Password == pass);
 
             _logins.Setup(x => x.GetUser(It.IsAny<string>())).ReturnsAsync(model);
