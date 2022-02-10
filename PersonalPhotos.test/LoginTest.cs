@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PersonalPhotos.Models;
 using System.Threading.Tasks;
+using Core.Models;
 
 namespace PersonalPhotos.test
 {
@@ -18,7 +19,13 @@ namespace PersonalPhotos.test
         public LoginTest()
         {
             _logins = new Mock<ILogins>();
+
+            var session = Mock.Of<ISession>();
+            var httpsContext = Mock.Of<HttpContext>(x=>x.Session == session);
+
             _accessor = new Mock<IHttpContextAccessor>();
+            _accessor.Setup(x => x.HttpContext).Returns(httpsContext);
+
             _controller = new LoginsController(_logins.Object, _accessor.Object);
         }
         [Fact]
@@ -34,15 +41,28 @@ namespace PersonalPhotos.test
 
             // these code can use on two test class
             Assert.NotNull(result);
-            Assert.Equal("Login",result.ViewName,ignoreCase:true);
+            Assert.Equal("Login", result.ViewName, ignoreCase: true);
         }
         [Fact]
         public async Task Login_GivenModelStateInvalid_ReturnLoginView()
         {
-            _controller.ModelState.AddModelError("Test","Test");
+            _controller.ModelState.AddModelError("Test", "Test");
 
             var result = await _controller.Login(Mock.Of<LoginViewModel>()) as ViewResult;
-            Assert.Equal("Login",result.ViewName,ignoreCase:true);
+            Assert.Equal("Login", result.ViewName, ignoreCase: true);
+        }
+        [Fact]
+        public async Task Login_GivenCorrectPassword_RedirectoDisplayAction()
+        {
+            const string pass= "Test1234";
+            var modelView = Mock.Of<LoginViewModel>(x =>x.Email=="test@gmail.com" && x.Password == pass);
+            var model = Mock.Of<User>(x => x.Password == pass);
+
+            _logins.Setup(x => x.GetUser(It.IsAny<string>())).ReturnsAsync(model);
+
+            var result = await _controller.Login(modelView);
+
+            Assert.IsType<RedirectToActionResult>(result);
         }
     }
 }
