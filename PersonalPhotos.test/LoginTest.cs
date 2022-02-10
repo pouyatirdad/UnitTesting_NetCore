@@ -77,5 +77,22 @@ namespace PersonalPhotos.test
 
             Assert.IsType<RedirectToActionResult>(result);
         }
+
+        // practice : write test for ,if the user password is incorect 
+        [Fact]
+        public async Task Login_GivenInCorrectPassword_RedirecToLogin()
+        {
+            const string CorrectPassword = "Test1234";
+            const string InCorrectPassword = "Test123";
+
+            var modelView = Mock.Of<LoginViewModel>(x => x.Email == "test@gmail.com" && x.Password == CorrectPassword);
+            var model = Mock.Of<User>(x => x.Password == InCorrectPassword);
+
+            _logins.Setup(x => x.GetUser(It.IsAny<string>())).ReturnsAsync(model);
+
+            var result = await _controller.Login(modelView) as ViewResult;
+
+            Assert.Equal("Login",result.ViewName,ignoreCase:true);
+        }
     }
 }
