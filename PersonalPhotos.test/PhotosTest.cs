@@ -36,5 +36,28 @@ namespace PersonalPhotos.test
             //Assert
             Assert.Equal("Display", result.ActionName, ignoreCase: true);
         }
+        [Fact]
+        public void DisplayAction_ReturnTrue()
+        {
+            var session = Mock.Of<ISession>();
+            session.Set("User", Encoding.UTF8.GetBytes("test@gmail.com"));
+
+            var httpContext = Mock.Of<HttpContext>(x => x.Session == session);
+            var accessor = Mock.Of<IHttpContextAccessor>(x => x.HttpContext == httpContext);
+
+            var fileStorage = Mock.Of<IFileStorage>();
+            var keyGenerator = Mock.Of<IKeyGenerator>();
+            var photoMedia = Mock.Of<IPhotoMetaData>();
+            var fromFile = Mock.Of<IFormFile>();
+
+            var model = Mock.Of<PhotoUploadViewModel>(x => x.File == fromFile);
+            var controller = new PhotosController(keyGenerator, accessor, photoMedia, fileStorage);
+            
+
+            var result = controller.Display() as ViewResult;
+
+            
+            Assert.Equal("Display", result.ViewName, ignoreCase: true);
+        }
     }
 }
